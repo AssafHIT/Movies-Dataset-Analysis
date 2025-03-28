@@ -133,3 +133,9 @@ Used SQL queries to create visualizations in Tableau
 [Tableau Dashboard Link](https://public.tableau.com/app/profile/assaf.yehezkel237/viz/MovieIndustryInsights/Dashboard1?publish=yes)
 
 ---
+## 🔍 Summary
+
+This project demonstrates the power of data analysis in the movie industry by leveraging SQL, Python, and Tableau to extract meaningful insights from a comprehensive movie dataset. It showcases advanced data manipulation techniques, statistical analysis, and visual storytelling through in-depth exploration of movie finances, genres, and performance metrics.
+
+Feel free to explore the repository, and don't hesitate to reach out if you'd like to discuss any aspects of this project or the automation practices used here. 
+---
