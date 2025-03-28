@@ -128,13 +128,9 @@ FROM movies_df
 
 ---
 
-## 🔄 Results
-After running these scripts, the Nashville Housing data is:
-- 🧹 Free of duplicates
-- 📆 Standardized date formats
-- 🏠 Address information broken into component parts
-- 📊 Categorical values standardized
-- ⚡ Optimized with only necessary columns
+## 📈 Tableau Dashboard
+Used SQL queries to create visualizations in Tableau
+![Dashboard Screenshot](Dashboard 1.png)
 
 ---
 
