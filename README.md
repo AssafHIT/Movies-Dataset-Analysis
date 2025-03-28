@@ -1,6 +1,6 @@
 
 # Movie Industry Data Analysis 🎬🎭
-
+![Dashboard Screenshot](Dashboard1.png)
 ## 📽️ Project Overview
 This project analyzes a movie dataset to gain insights into various aspects of the film industry. The dataset includes information about movies, such as their name, genre, budget, gross earnings, company, director, stars, and more. The project involves cleaning the data, performing SQL queries, and creating a Tableau dashboard for visual analysis.
 
@@ -130,7 +130,6 @@ FROM movies_df
 
 ## 📈 Tableau Dashboard
 Used SQL queries to create visualizations in Tableau
-![Dashboard Screenshot](Dashboard1.png)
 [Tableau Dashboard Link](https://public.tableau.com/app/profile/assaf.yehezkel237/viz/MovieIndustryInsights/Dashboard1?publish=yes)
 
 ---
