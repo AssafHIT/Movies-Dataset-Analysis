@@ -22,6 +22,19 @@ The dataset contains **real world information** of worldwide films. https://www.
 
 ---
 
+## 🔍 Data Preparation and Exploratory Analysis
+## Dataset Exploration
+Comprehensive movie dataset analyzed, covering:
+
+Movie details, Release information, Performance metrics, Financial data
+
+Correlation Discoveries
+
+Strong link between budget and gross revenue (0.74)
+Moderate connection between gross revenue and votes (0.61)
+Weak relationship between company and gross revenue (0.15)
+---
+
 ## 🛠️ SQL Data Cleaning Steps
 
 ### 1. Standardize Date Format
