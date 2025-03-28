@@ -74,7 +74,7 @@ ORDER BY m.gross DESC
 ```
 **Explanation:** Reveals top directors along with their highest-grossing film.
 
-### 4. Best Year for Each Company
+### Best Year for Each Company
 ```sql
 SELECT m.company, m.year, m.total_gross
 FROM (
