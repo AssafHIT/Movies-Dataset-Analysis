@@ -130,11 +130,7 @@ FROM movies_df
 
 ## 📈 Tableau Dashboard
 Used SQL queries to create visualizations in Tableau
-![Dashboard Screenshot](Dashboard 1.png)
+![Dashboard Screenshot](Dashboard1.png)
+[Tableau Dashboard Link](https://public.tableau.com/app/profile/assaf.yehezkel237/viz/MovieIndustryInsights/Dashboard1?publish=yes)
 
 ---
-
-## 📈 Future Improvements
-- Creating indexes on frequently queried columns
-- Adding additional data validation rules
-- Creating views for common analysis scenarios
