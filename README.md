@@ -28,11 +28,15 @@ Comprehensive movie dataset analyzed, covering:
 
 Movie details, Release information, Performance metrics, Financial data
 
-Correlation Discoveries
+Correlation Discoveries:
 
 Strong link between budget and gross revenue (0.74)
 Moderate connection between gross revenue and votes (0.61)
-Weak relationship between company and gross revenue (0.15)
+Weak relationship between company and gross revenue (0.15).
+For example, Budget and Revenue scatter plot:
+![Exapmle](jupyternotebookplt.png)
+
+[Full Jupyter Notebook](film_industry_data.ipynb)
 ---
 
 ## 🛠️ SQL Data Cleaning Steps
