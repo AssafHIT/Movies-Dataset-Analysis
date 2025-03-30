@@ -1,4 +1,3 @@
-
 # Movie Industry Data Analysis 🎬🎭
 ![Dashboard Screenshot](Dashboard1.png)
 ## 📽️ Project Overview
