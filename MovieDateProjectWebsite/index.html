@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Industry Data Analysis</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Movie Industry Data Analysis 🎬🎭</h1>
+        <a href="https://public.tableau.com/app/profile/assaf.yehezkel237/viz/MovieIndustryInsights/Dashboard1?publish=yes" target="_blank">
+            <img src="Dashboard1.png" alt="Dashboard Screenshot" class="dashboard-image">
+        </a>
+    </header>
+
+    <section class="overview">
+        <h2>📽️ Project Overview</h2>
+        <p>This project analyzes a movie dataset to gain insights into various aspects of the film industry. The dataset includes information about movies, such as their name, genre, budget, gross earnings, company, director, stars, and more. The project involves cleaning the data, performing SQL queries, and creating a Tableau dashboard for visual analysis.</p>
+        <ul>
+            <li>✅ Analyze movie financial performance</li>
+            <li>✅ Identify top-performing genres, companies, and actors</li>
+            <li>✅ Explore correlations between movie ratings, budgets, and gross earnings</li>
+            <li>✅ Provide data-driven insights into the film industry</li>
+        </ul>
+        <p><strong>🛠️ Technologies Used:</strong> SQL Server, Jupyter Notebook, Python (for data cleaning), Pandas</p>
+    </section>
+
+    <section class="dataset">
+        <h2>📂 Dataset: Movie Industry</h2>
+        <p>The dataset contains <strong>real world information</strong> of worldwide films. <a href="https://www.kaggle.com/datasets/danielgrijalvas/movies" target="_blank">Link to the dataset</a></p>
+    </section>
+
+    <section class="analysis">
+        <h2>🔍 Data Preparation and Exploratory Analysis</h2>
+        <p>The dataset explored covers various aspects like movie details, release information, performance metrics, and financial data.</p>
+        <h3>Correlation Discoveries:</h3>
+        <ul>
+            <li>Strong link between budget and gross revenue (0.74)</li>
+            <li>Moderate connection between gross revenue and votes (0.61)</li>
+            <li>Weak relationship between company and gross revenue (0.15)</li>
+        </ul>
+        <div class="image-container">
+            <img src="jupyternotebookplt.png" alt="Example" class="example-plot">
+            <img src="matrix.png" alt="Matrix" class="example-plot">
+        </div>
+        <a href="https://github.com/AssafHIT/Movies-Dataset-Analysis/blob/main/film_industry_data.ipynb" class="notebook-link" target="_blank">Full Jupyter Notebook</a>
+    </section>
+
+    <section class="sql-analysis">
+        <h2>🛠️ SQL Data Analysis Highlights</h2>
+        <h3>Top Earning Companies</h3>
+        <pre><code>SELECT TOP 10 company, SUM(gross) as total_gross
+FROM movies_df
+GROUP BY company 
+ORDER BY total_gross DESC</code></pre>
+<strong>Explanation:</strong> Reveals the most financially successful movie production companies.
+
+        <h3>Return on Investment Analysis</h3>
+        <pre><code>SELECT name, budget, gross, 
+       (gross / budget) AS ROI
+FROM movies_df 
+ORDER BY ROI DESC</code></pre>
+<strong>Explanation:</strong> Compares movie budgets to their gross earnings to identify the most profitable films.
+
+        <h3>Top Directors and Their Most Successful Movie</h3>
+        <pre><code>SELECT TOP 10 m.director, m.name, m.gross 
+FROM movies_df m
+JOIN (
+    SELECT director, MAX(gross) AS max_gross 
+    FROM movies_df 
+    GROUP BY director
+) AS max_movies
+ON m.director = max_movies.director 
+   AND m.gross = max_movies.max_gross
+ORDER BY m.gross DESC</code></pre>
+<strong>Explanation:</strong> Reveals top directors along with their highest-grossing film.
+
+<h3>Best Year for Each Company</h3>
+        <pre><code>SELECT m.company, m.year, m.total_gross
+FROM (
+    SELECT company, year, SUM(gross) AS total_gross,
+           RANK() OVER (PARTITION BY company ORDER BY SUM(gross) DESC) AS rank
+    FROM movies_df
+    GROUP BY company, year
+) AS m
+WHERE rank = 1
+ORDER BY total_gross DESC</code></pre>
+<strong>Explanation:</strong> Determines the most financially successful year for each production company.
+
+<h3>Top 3 Highest Grossing Movies Per Genre</h3>
+        <pre><code>With RankedMovies as (
+ SELECT 
+        genre, name, gross,
+        RANK() OVER (PARTITION BY genre ORDER BY gross DESC) AS rank
+    FROM PortfolioProject.dbo.movies_df
+)
+select genre, name, gross FROM RankedMovies
+WHERE rank <= 3
+ORDER BY genre, gross DESC</code></pre>
+
+<h3>Correlation Analysis</h3>
+        <pre><code>SELECT 
+    (AVG(votes * gross) - (AVG(votes) * AVG(gross))) /
+    (STDEV(votes) * STDEV(gross)) AS votes_gross_correlation,
+    (AVG(score * gross) - (AVG(score) * AVG(gross))) /
+    (STDEV(score) * STDEV(gross)) AS score_gross_correlation
+FROM movies_df</code></pre>
+<strong>Explanation:</strong> Calculates statistical correlations between votes, scores, and gross earnings.
+
+<p><strong>Find more queries in the </strong><a href="https://github.com/AssafHIT/Movies-Dataset-Analysis/blob/main/film_industry_dataset_querys.sql" target="_blank">SQL Query file</a></p>
+
+<h2>💡 SQL Skills Demonstrated</h2>
+        <ul>
+            <li>🔍 <strong>Advanced Data Analysis Techniques</strong></li>
+            <li>🏆 <strong>Ranking and Comparative Analysis</strong></li>
+            <li>📊 <strong>Aggregation and Summarization</strong></li>
+            <li>🔢 <strong>Window Functions</strong></li>
+            <li>🤝 <strong>Complex Subquery and Join Operations</strong></li>
+            <li>📈 <strong>Statistical Correlation Calculations</strong></li>
+            <li>🧩 <strong>Complex Filtering and Ranking Strategies</strong></li>
+            <li>📑 <strong>Common Table Expressions (CTEs)</strong></li>
+        </ul>
+    </section>
+
+    <section class="dashboard">
+        <h2>📈 Tableau Dashboard</h2>
+        <p>Used SQL queries to create visualizations in Tableau</p>
+        <a href="https://public.tableau.com/app/profile/assaf.yehezkel237/viz/MovieIndustryInsights/Dashboard1?publish=yes" target="_blank">View Dashboard</a>
+    </section>
+
+    <section class="summary">
+        <h2>🔍 Summary</h2>
+        <p>This project demonstrates the power of data analysis in the movie industry by leveraging SQL, Python, and Tableau to extract meaningful insights from a comprehensive movie dataset. It showcases advanced data manipulation techniques, statistical analysis, and visual storytelling through in-depth exploration of movie finances, genres, and performance metrics.</p>
+        <p><strong>free to explore the repository, and don't hesitate to reach out if you'd like to discuss any aspects of this project or the automation practices used here.</strong></p>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Assaf Yehezkel</p>
+        <div class="footer-links">
+            <a href="https://github.com/AssafHIT/Movies-Dataset-Analysis.git" target="_blank" class="footer-icon">
+                <i class="fab fa-github"></i> GitHub
+            </a>
+            <a href="https://www.linkedin.com/in/assaf-yehezkel/" target="_blank" class="footer-icon">
+                <i class="fab fa-linkedin"></i> LinkedIn
+            </a>
+            <a href="mailto:asafyehezkel237@gmail.com" class="footer-icon">
+                <i class="fas fa-envelope"></i> Email
+            </a>
+            <span class="footer-phone">
+                <i class="fas fa-phone-alt"></i> 054-444-0458
+            </span>
+        </div>
+    </footer>
+    
+</body>
+</html>
